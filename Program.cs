@@ -22,7 +22,7 @@ foreach (var operation in operations)
     Console.WriteLine(operation);
 }
 
-
+Console.ReadLine();
 
 
 
