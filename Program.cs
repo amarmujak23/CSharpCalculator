@@ -23,6 +23,7 @@ foreach (var operation in operations)
     Console.WriteLine(operation);
 }
 
+<<<<<<< HEAD
 Console.WriteLine("--------------------");
 
 // Using double data type to allow for decimal numbers
@@ -76,6 +77,9 @@ switch (choice)
 // string interpolation
 // Console.WriteLine($"You selected: {operations[choice]}");
 
+=======
+Console.ReadLine();
+>>>>>>> 0e7abd81ce044aacd0600cfa1b4d17aae7cea9ec
 
 
 
