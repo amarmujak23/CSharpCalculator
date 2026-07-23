@@ -1,7 +1,8 @@
 ﻿using System.Numerics;
 using System.Threading.Channels;
 
-string intro = "Calculator C# 1.0";
+Console.WriteLine("Calculator C# 1.0");
+Console.WriteLine("--------------------");
 
 // Parsing in C# converts a string to a number.
 
@@ -23,7 +24,6 @@ foreach (var operation in operations)
     Console.WriteLine(operation);
 }
 
-<<<<<<< HEAD
 Console.WriteLine("--------------------");
 
 // Using double data type to allow for decimal numbers
@@ -47,12 +47,20 @@ Console.Clear();
 
 
 
+
+
+Console.WriteLine("Do you want to perform another operation? (yes/no): ");
+string tryAgain = Console.ReadLine();
+if (tryAgain == "yes")
+
 // Using switch statement to handle the selected operation from dictionary
 switch (choice)
 {
     case 1:
         double add = number1 + number2;
         Console.WriteLine($"The result of {operations[choice]} is: {add}");
+        Console.WriteLine(tryAgain);
+
         break;
     case 2:
         double sub = number1 - number2;
@@ -67,19 +75,14 @@ switch (choice)
         Console.WriteLine($"The result of {operations[choice]} is: {div}");
         break;
     case 5:
-        double sqrt = Math.Sqrt(number1);
+        int squareInput = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the number for square root: ");
+        double sqrt = Math.Sqrt(squareInput);
         Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
         break;
 }
 
 
-
-// string interpolation
-// Console.WriteLine($"You selected: {operations[choice]}");
-
-=======
-Console.ReadLine();
->>>>>>> 0e7abd81ce044aacd0600cfa1b4d17aae7cea9ec
 
 
 
