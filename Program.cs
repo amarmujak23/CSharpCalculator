@@ -4,7 +4,7 @@ using System.Threading.Channels;
 Console.WriteLine("Calculator C# 1.0");
 Console.WriteLine("--------------------");
 
-// Parsing in C# converts a string to a number.
+// Parsing in C# converts a string to a number. int number = int.Parse("123"); // number is now 123
 
 //This line calls a dictionary that contains the operations available in the calculator.
 Dictionary<int, string> operations = new Dictionary<int, string>()
@@ -17,74 +17,76 @@ Dictionary<int, string> operations = new Dictionary<int, string>()
 };
 
 
-//Prints menu 
+string tryAgain;
 
-foreach (var operation in operations)
+do
 {
-    Console.WriteLine(operation);
+    Console.Clear();
+    //Prints menu 
+
+    foreach (var operation in operations)
+    {
+        Console.WriteLine(operation);
+    }
+
+    Console.WriteLine("--------------------");
+
+    // Using double data type to allow for decimal numbers
+    double number1 = 0;
+    double number2 = 0;
+
+
+    Console.WriteLine("Select an operation by entering the corresponding number: ");
+
+    int choice = int.Parse(Console.ReadLine());
+    // string concatination
+    Console.WriteLine("You selected: " + operations[choice]);
+
+    Console.WriteLine("Enter the first number: ");
+    number1 = double.Parse(Console.ReadLine());
+    Console.Clear();
+
+    Console.WriteLine("Enter the second number: ");
+    number2 = double.Parse(Console.ReadLine());
+    Console.Clear();
+
+    // Using switch statement to handle the selected operation from dictionary
+    switch (choice)
+    {
+        case 1:
+            double add = number1 + number2;
+            Console.WriteLine($"The result of {operations[choice]} is: {add}");
+
+            break;
+        case 2:
+            double sub = number1 - number2;
+            Console.WriteLine($"The result of {operations[choice]} is: {sub}");
+            break;
+        case 3:
+            double mul = number1 * number2;
+            Console.WriteLine($"The result of {operations[choice]} is: {mul}");
+            break;
+        case 4:
+            double div = number1 / number2;
+            Console.WriteLine($"The result of {operations[choice]} is: {div}");
+            break;
+        case 5:
+            Console.WriteLine("Enter the number for square root: ");
+            double squareInput = double.Parse(Console.ReadLine());
+            double sqrt = Math.Sqrt(squareInput);
+            Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
+            break;
+    }
+    Console.WriteLine("Do you want to perform another operation? (yes/no): ");
+    tryAgain = Console.ReadLine()!.Trim().ToLower();
+
 }
+while (tryAgain == "yes" || tryAgain == "y");
 
-Console.WriteLine("--------------------");
-
-// Using double data type to allow for decimal numbers
-double number1 = 0;
-double number2 = 0;
-
-
-Console.WriteLine("Select an operation by entering the corresponding number: ");
-
-int choice = int.Parse(Console.ReadLine());
-// string concatination
-Console.WriteLine("You selected: " + operations[choice]);
-
-Console.WriteLine("Enter the first number: ");
-number1 = double.Parse(Console.ReadLine());
-Console.Clear();
-
-Console.WriteLine("Enter the second number: ");
-number2 = double.Parse(Console.ReadLine());
-Console.Clear();
-
-
-
-
-
-Console.WriteLine("Do you want to perform another operation? (yes/no): ");
-string tryAgain = Console.ReadLine();
-if (tryAgain == "yes")
-
-// Using switch statement to handle the selected operation from dictionary
-switch (choice)
+if (tryAgain != "yes" && tryAgain != "y") 
 {
-    case 1:
-        double add = number1 + number2;
-        Console.WriteLine($"The result of {operations[choice]} is: {add}");
-        Console.WriteLine(tryAgain);
-
-        break;
-    case 2:
-        double sub = number1 - number2;
-        Console.WriteLine($"The result of {operations[choice]} is: {sub}");
-        break;
-    case 3:
-        double mul = number1 * number2;
-        Console.WriteLine($"The result of {operations[choice]} is: {mul}");
-        break;
-    case 4:
-        double div = number1 / number2;
-        Console.WriteLine($"The result of {operations[choice]} is: {div}");
-        break;
-    case 5:
-        int squareInput = int.Parse(Console.ReadLine());
-        Console.WriteLine("Enter the number for square root: ");
-        double sqrt = Math.Sqrt(squareInput);
-        Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
-        break;
+    Environment.Exit(0);
 }
-
-
-
-
 
 // Testing key
 Console.ReadKey();
