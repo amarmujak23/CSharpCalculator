@@ -19,6 +19,9 @@ Dictionary<int, string> operations = new Dictionary<int, string>()
 
 string tryAgain;
 
+// do statement is used to execute a block of code at least once,
+// and then repeatedly execute the block as long as a specified condition is true.
+
 do
 {
     Console.Clear();
@@ -71,10 +74,11 @@ do
             Console.WriteLine($"The result of {operations[choice]} is: {div}");
             break;
         case 5:
-            Console.WriteLine("Enter the number for square root: ");
-            double squareInput = double.Parse(Console.ReadLine());
-            double sqrt = Math.Sqrt(squareInput);
-            Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
+            if (choice == 5)
+            {
+                int sqrt = (int)Math.Sqrt(number1);
+                Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
+            }
             break;
     }
     Console.WriteLine("Do you want to perform another operation? (yes/no): ");
@@ -83,6 +87,7 @@ do
 }
 while (tryAgain == "yes" || tryAgain == "y");
 
+// && represents AND in C#
 if (tryAgain != "yes" && tryAgain != "y") 
 {
     Environment.Exit(0);
