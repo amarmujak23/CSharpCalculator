@@ -43,14 +43,28 @@ do
 
     int choice = int.Parse(Console.ReadLine());
     // string concatination
+    // need to write error handling for when selecting a wrong operation
     Console.WriteLine("You selected: " + operations[choice]);
+
+    if (choice < 1 || choice > 5)
+    {
+        Console.WriteLine("Invalid choice. Please select a valid operation.");
+        Console.ReadKey();
+        Console.Clear();
+        continue;
+    }
 
     Console.WriteLine("Enter the first number: ");
     number1 = double.Parse(Console.ReadLine());
     Console.Clear();
 
-    Console.WriteLine("Enter the second number: ");
-    number2 = double.Parse(Console.ReadLine());
+
+    if (choice != 5)
+    {
+        Console.WriteLine("Enter the second number: ");
+        number2 = double.Parse(Console.ReadLine());
+    }
+
     Console.Clear();
 
     // Using switch statement to handle the selected operation from dictionary
@@ -74,11 +88,9 @@ do
             Console.WriteLine($"The result of {operations[choice]} is: {div}");
             break;
         case 5:
-            if (choice == 5)
-            {
-                int sqrt = (int)Math.Sqrt(number1);
-                Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
-            }
+            double sqrt = Math.Sqrt(number1);
+            Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
+            
             break;
     }
     Console.WriteLine("Do you want to perform another operation? (yes/no): ");
