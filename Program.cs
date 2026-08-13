@@ -17,7 +17,7 @@ Dictionary<int, string> operations = new Dictionary<int, string>()
 };
 
 
-string tryAgain;
+string tryAgain = "yes";
 
 // do statement is used to execute a block of code at least once,
 // and then repeatedly execute the block as long as a specified condition is true.
@@ -44,8 +44,6 @@ do
     int choice = int.Parse(Console.ReadLine());
     // string concatination
     // need to write error handling for when selecting a wrong operation
-    Console.WriteLine("You selected: " + operations[choice]);
-
     if (choice < 1 || choice > 5)
     {
         Console.WriteLine("Invalid choice. Please select a valid operation.");
@@ -53,6 +51,9 @@ do
         Console.Clear();
         continue;
     }
+
+    Console.WriteLine("You selected: " + operations[choice]);
+
 
     Console.WriteLine("Enter the first number: ");
     number1 = double.Parse(Console.ReadLine());
