@@ -24,9 +24,9 @@ string tryAgain = "yes";
 
 do
 {
-    Console.Clear();
     //Prints menu 
 
+    Console.Clear();
     foreach (var operation in operations)
     {
         Console.WriteLine(operation);
@@ -41,9 +41,20 @@ do
 
     Console.WriteLine("Select an operation by entering the corresponding number: ");
 
-    int choice = int.Parse(Console.ReadLine());
+   string? input = Console.ReadLine();
+    // The question mark, is telling C# "I understand that this variable might contain "null"
+    int choice;
+    if (!int.TryParse(input, out choice))
+    {
+        Console.WriteLine("Please enter a number, not text.");
+        Console.ReadKey();
+        Console.Clear();
+        continue;
+    }
+
     // string concatination
     // need to write error handling for when selecting a wrong operation
+    // handled when typing an integer outside the correct range, need to handle when typing a string instead of a number
     if (choice < 1 || choice > 5)
     {
         Console.WriteLine("Invalid choice. Please select a valid operation.");
@@ -54,9 +65,14 @@ do
 
     Console.WriteLine("You selected: " + operations[choice]);
 
+// Error handling for when the user types a letter instead of a number when calculating
 
     Console.WriteLine("Enter the first number: ");
-    number1 = double.Parse(Console.ReadLine());
+    // Using TryParse to validate user input and handle invalid input gracefully
+    while (!double.TryParse(Console.ReadLine(), out number1))
+    {
+        Console.WriteLine("Invalid input. Please enter a valid number.");
+    }
     Console.Clear();
 
 
