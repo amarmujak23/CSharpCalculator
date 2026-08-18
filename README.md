@@ -31,6 +31,3 @@ Alternatively, open the project in Visual Studio 2022 (or newer) that supports .
 - When performing division, if the second number is zero the program prints an error warning.
 - Square root of a negative number prints an error warning.
 - The program uses input loops to ensure the user provides valid responses before proceeding.
-
-## License
-This project is provided as-is without warranty.
