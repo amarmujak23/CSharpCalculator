@@ -76,7 +76,7 @@ do
     if (choice != 5)
     {
         Console.WriteLine("Enter the second number: ");
-        while (!double.TryParse(Console.ReadLine(), out number2)) // THis line uses TryParse to validate user input and handle invalid input gracefully
+        while (!double.TryParse(Console.ReadLine(), out number2)) // This line uses TryParse to validate user input and handle invalid input gracefully
         {
             Console.WriteLine("Invalid input. Please enter a valid number.");
         }
