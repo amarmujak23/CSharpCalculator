@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using System.Threading.Channels;
-
-Console.WriteLine("Calculator C# 1.0");
+﻿Console.WriteLine("Calculator C# 1.0");
 Console.WriteLine("--------------------");
 
 // Parsing in C# converts a string to a number. int number = int.Parse("123"); // number is now 123
@@ -101,26 +98,53 @@ do
             Console.WriteLine($"The result of {operations[choice]} is: {mul}");
             break;
         case 4:
+            // div holds the answer
             double div = number1 / number2;
             Console.WriteLine($"The result of {operations[choice]} is: {div}");
+            if (number2 == 0)
+            {
+                Console.WriteLine("Error: Division by zero is not allowed.");
+            }
             break;
         case 5:
             double sqrt = Math.Sqrt(number1);
             Console.WriteLine($"The result of {operations[choice]} is: {sqrt}");
-            
+
+            if (number1 < 0)
+            {
+                Console.WriteLine("Error: Square root of a negative number is not allowed.");
+            }
+
             break;
     }
-    Console.WriteLine("Do you want to perform another operation? (yes/no): ");
-    tryAgain = Console.ReadLine()!.Trim().ToLower();
 
+
+    do
+    {
+        Console.WriteLine(
+            "Do you want to perform another operation? (yes/no):");
+
+        tryAgain = Console.ReadLine()!.Trim().ToLower();
+
+        if (tryAgain != "yes" &&
+            tryAgain != "y" &&
+            tryAgain != "no" &&
+            tryAgain != "n")
+        {
+            Console.WriteLine("Please answer 'yes' or 'no'.");
+        }
+    }
+    while (tryAgain != "yes" &&
+          tryAgain != "y" &&
+          tryAgain != "no" &&
+          tryAgain != "n");
 }
 while (tryAgain == "yes" || tryAgain == "y");
-
-// && represents AND in C#
-if (tryAgain != "yes" && tryAgain != "y") 
+if (tryAgain == "no" || tryAgain == "n")
 {
-    Environment.Exit(0);
-}
+    Environment.Exit(0); // Exit(0) indicates that the program has completed successfully without errors.
+                         // if it was Exit(1) it would indicate that the program has completed with errors.
+})
 
 // Testing key
 Console.ReadKey();
