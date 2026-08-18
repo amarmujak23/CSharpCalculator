@@ -144,7 +144,7 @@ if (tryAgain == "no" || tryAgain == "n")
 {
     Environment.Exit(0); // Exit(0) indicates that the program has completed successfully without errors.
                          // if it was Exit(1) it would indicate that the program has completed with errors.
-})
+}
 
 // Testing key
 Console.ReadKey();
